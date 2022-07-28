@@ -17,7 +17,6 @@ class TestStrategySearch():
             app.go_to('https://www.comon.ru/')
             app.models.main.click_strategies_link()
 
-
         with allure.step('Step 2. В поле "Поиск стратегии" вводим неполное ' \
                         'название стратегии и кликаем по значку поиска'):
             app.models.strategies.input_partial_name(partial_name)
