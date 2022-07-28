@@ -1,18 +1,42 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+
 from .locators import BaseLocators
+
 
 class BasePage():
     def __init__(self, driver, base_url):
         self.driver = driver
         self.url = base_url
 
+    @property
     def strategies_link(self):
-        self.should_be_strategies_link()
-        strategies_link = self.driver.find_element(
-            *BaseLocators.STRATEGY_LINK
+        strategies_link = self.get_element(
+            'Strategy link',
+            BaseLocators.STRATEGY_LINK
         )
         
         return strategies_link
 
-    def should_be_strategies_link(self):
-        assert self.driver.find_element(*BaseLocators.STRATEGY_LINK), \
-               'Strategy link is not found'
+    def get_element(self, element, selector, wait=1):
+        if self.is_visibility_of_element(selector, wait):
+            return self.driver.find_element(*selector)
+        else:
+            raise TimeoutError(f'{element} is not found')
+
+    def get_elements(self, element, selector):
+        try: 
+            return self.driver.find_elements(*selector)
+        except:
+            raise f'{element} are not found'
+    
+    def is_visibility_of_element(self, selector, wait):
+        try:
+            WebDriverWait(self.driver, wait).until(
+                EC.presence_of_element_located(selector)
+            )
+        except TimeoutError:
+            return False
+        
+        return True

@@ -1,4 +1,4 @@
-from .models import Models
+from .model import Models
 
 
 class Application(object):
@@ -7,6 +7,8 @@ class Application(object):
         self.driver = driver
         self.driver.implicitly_wait(10)
         self.models = Models(driver, base_url)
+
+        self.driver.get(base_url)
 
     def go_to(self, url):
         self.driver.get(url)
