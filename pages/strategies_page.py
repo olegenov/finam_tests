@@ -5,6 +5,7 @@ from .base_page import BasePage
 from .locators import StrategiesLocators
 from ..utils import wait
 
+
 class StrategiesPage(BasePage):
     @property
     def search_field(self):
