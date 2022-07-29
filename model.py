@@ -13,3 +13,4 @@ class Models:
     def __init__(self, driver, base_url):
         self.main = Main(driver, MainPage(driver, base_url))
         self.strategies = Strategies(driver, StrategiesPage(driver, base_url))
+        self.strategy = Strategy(driver, StrategyPage(driver, base_url))
