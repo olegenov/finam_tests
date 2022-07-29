@@ -33,10 +33,33 @@ class StrategiesPage(BasePage):
         )
 
         return search_results
+    
+    @property
+    def card_graph(self):
+        graph = self.get_element(
+            'Graph',
+            StrategiesLocators.GRAPH
+        )
 
-    def should_be_strategies_page(self):
-        assert self.driver.current_url == self.url, 'Incorrect url'
+        return graph
+    
+    @property
+    def card_title(self):
+        card_title = self.get_element(
+            'Card title',
+            StrategiesLocators.CARD_TITLE
+        )
 
-    def compare_names(self, seacrh_request, name):
-        assert seacrh_request in name, 'Search request doesnt match results\n'\
-                                       f'"{seacrh_request}" expected, got {name}'
+        return card_title
+
+    def compare_names(self, expected, got):
+        assert expected in got, 'Search request doesnt match results\n'\
+                                f'"{expected}" expected, got {got}'
+
+    def name_in_list(self, name, expected_list):
+        assert name in expected_list, 'Search request doesnt match results\n'\
+                                      f'"{name}" didnt expected'
+    
+    def key_word_in_result(self, key_word, name, expected_list):
+        assert (key_word in name or name in expected_list), 'Search request doesnt match results\n'\
+                                      f'"{name}" didnt expected'

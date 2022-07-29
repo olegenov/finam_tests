@@ -10,6 +10,9 @@ class BasePage():
         self.driver = driver
         self.url = base_url
 
+    def should_be_right_page(self, url):
+        assert self.driver.current_url == url, f'Incorrect url\n{url} expected, {self.driver.current_url} got'
+
     @property
     def strategies_link(self):
         strategies_link = self.get_element(
