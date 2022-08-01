@@ -12,7 +12,7 @@ class TestStrategySearch():
         partial_name = 'Долгосрочные'
 
         with allure.step('Step 1. Кликнуть на вкладку "Торговые стратегии"'):
-            app.models.main.click_strategies_link()
+            app.models.nav.click_strategies_link()
 
         with allure.step('Step 2. В поле "Поиск стратегии" вводим неполное название стратегии и кликаем по значку поиска'):
             app.models.strategies.input_search_request(partial_name)
@@ -29,7 +29,7 @@ class TestStrategySearch():
         nickname = 'bsk'
 
         with allure.step('Step 1. Кликнуть на вкладку "Торговые стратегии"'):
-            app.models.main.click_strategies_link()
+            app.models.nav.click_strategies_link()
 
         with allure.step('Step 2. В поле "Поиск стратегии" вводим никнейм автора стратегии'):
             app.models.strategies.input_search_request(nickname)
@@ -49,7 +49,7 @@ class TestStrategySearch():
             app.models.main.go_to('https://www.comon.ru/')
 
         with allure.step('Step 2. Кликнуть по разделу "Стратегии"'):
-            app.models.main.click_strategies_link()
+            app.models.nav.click_strategies_link()
 
         with allure.step('Step 3. В поисковое поле ввести ключ. слово и кликнуть на кнопку поиска'):
             app.models.strategies.input_search_request(key_name)
