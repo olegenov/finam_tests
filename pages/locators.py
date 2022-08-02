@@ -25,3 +25,12 @@ class ContactLocators:
     CLIENT_SUPPORT = (By.CSS_SELECTOR, 'button[data-marker="contactPage/contactCenter"]')
     DIALOG = (By.CSS_SELECTOR, 'div[role="dialog"] h2')
     SUPPORT_EMAIL = (By.XPATH, '//a[@data-marker="contactPage/support"]/../p/a')
+
+
+class RulesLocators:
+    TITLE = (By.XPATH, '//h1')
+    NEXT_BUTTON = (By.CSS_SELECTOR, 'span.MuiButton-label')
+    TAB = (By.XPATH, '//li[@role="treeitem"]//a[text()="{}"]')
+    HYPERLINK = (By.XPATH, '//a[text()="{}"]')
+    SEATCH_FIELD = (By.CSS_SELECTOR, 'input[value]')
+    SIMILARITIES = (By.XPATH, '//ul/a')
